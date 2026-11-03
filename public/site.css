@@ -29,12 +29,6 @@ img { max-width: 100%; }
   .migalhas { padding-left: 0 !important; }
   .faixa-deco { display: none; }
   .painel-heroi img { height: 260px !important; }
-  header nav { order: 3; flex-basis: 100% !important; justify-content: flex-start !important; gap: 0 18px !important; font-size: 12.5px !important; }
-  header nav a { padding: 8px 0 !important; }
-  header img { height: 48px !important; }
-  .so-desktop { display: none !important; }
-  .barra-topo > div { padding: 8px 16px !important; }
-  .cta-topo { padding: 10px 14px !important; font-size: 12.5px !important; min-height: 44px !important; box-shadow: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 html { scroll-behavior: smooth; }
@@ -65,3 +59,59 @@ html { scroll-behavior: smooth; }
 .rodape-col .rodape-cta:hover { background: #F7A266; color: #1E2B28; }
 .rodape-base { border-top: 1px solid rgba(255,255,255,0.12); max-width: 1200px; margin: 0 auto; padding: 20px 24px 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; font-size: 13px; color: #A9C2BA; }
 @media (max-width: 720px) { .rodape-grade { padding: 48px 20px 32px; gap: 32px; } .rodape-base { padding-bottom: 96px; } }
+
+/* Barra superior */
+.barra-topo { background: #063A2F; color: #FFFFFF; font-size: 14px; }
+.barra-topo-in { max-width: 1200px; margin: 0 auto; padding: 8px 24px; display: flex; gap: 10px 24px; justify-content: space-between; align-items: center; }
+.barra-topo-esq, .barra-topo-dir { display: flex; gap: 10px 18px; align-items: center; }
+.barra-topo-esq .so-desktop { font-weight: 600; color: #E8F1EE; }
+.selo-2002 { background: #F27123; color: #1E2B28; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; }
+.topo-contato { display: inline-flex; align-items: center; gap: 8px; color: #E8F1EE; text-decoration: none; }
+.topo-contato:hover { color: #FFFFFF; }
+.topo-contato strong { color: #FFFFFF; }
+.topo-ico { width: 28px; height: 28px; border-radius: 14px; border: 1.5px solid rgba(242,113,35,0.7); color: #F7A266; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.topo-contato:hover .topo-ico { background: #F27123; border-color: #F27123; color: #1E2B28; }
+.topo-redes { display: inline-flex; gap: 8px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.18); }
+.topo-redes a { width: 32px; height: 32px; border-radius: 16px; border: 1.5px solid rgba(255,255,255,0.35); color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; transition: background .15s ease, border-color .15s ease; }
+.topo-redes a:hover { background: #F27123; border-color: #F27123; color: #1E2B28; }
+.topo-redes a.yt:hover { background: #CC0000; border-color: #CC0000; color: #FFFFFF; }
+
+/* Cabeçalho e menu */
+.cabecalho { background: #FFFFFF; box-shadow: 0 6px 20px rgba(11,77,63,0.08); position: sticky; top: 0; z-index: 50; }
+.cabecalho-in { max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; gap: 16px; align-items: center; justify-content: space-between; }
+.cabecalho-logo { display: block; line-height: 0; flex: none; }
+.cabecalho-logo img { height: 58px; width: auto; }
+.menu { display: flex; align-items: center; gap: 2px; font-family: Montserrat, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; }
+.menu a { color: #0B4D3F; text-decoration: none; padding: 10px 12px; border-radius: 8px; transition: background .15s ease, color .15s ease; }
+.menu a:hover { background: #F4F6F5; color: #063A2F; }
+.menu a.ativo { background: #FFF1E7; color: #B4500B; box-shadow: inset 0 -2px 0 #F27123; }
+.menu .menu-cta-movel { display: none; }
+.cta-topo { flex: none; background: #F27123; color: #1E2B28; text-decoration: none; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.03em; text-transform: uppercase; padding: 12px 18px; border-radius: 10px; min-height: 46px; box-sizing: border-box; display: inline-flex; gap: 8px; align-items: center; box-shadow: 0 6px 16px rgba(242,113,35,0.3); transition: transform .15s ease, background .15s ease; }
+.cta-topo:hover { background: #F7A266; color: #1E2B28; transform: translateY(-1px); }
+.menu-botao { display: none; align-items: center; gap: 10px; background: #FFFFFF; border: 1.5px solid #DDE5E2; border-radius: 10px; padding: 10px 14px; min-height: 44px; font: 700 13px Montserrat, sans-serif; text-transform: uppercase; letter-spacing: 0.04em; color: #0B4D3F; cursor: pointer; }
+.menu-barras, .menu-barras::before, .menu-barras::after { display: block; width: 18px; height: 2px; background: #0B4D3F; border-radius: 2px; position: relative; transition: transform .2s ease, background .2s ease; }
+.menu-barras::before, .menu-barras::after { content: ""; position: absolute; left: 0; }
+.menu-barras::before { top: -6px; } .menu-barras::after { top: 6px; }
+.menu-botao[aria-expanded="true"] .menu-barras { background: transparent; }
+.menu-botao[aria-expanded="true"] .menu-barras::before { transform: translateY(6px) rotate(45deg); }
+.menu-botao[aria-expanded="true"] .menu-barras::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* Telas médias: menu um pouco mais compacto */
+@media (max-width: 1180px) { .menu a { padding: 10px 8px; font-size: 12px; } .cabecalho-logo img { height: 50px; } .cta-topo { padding: 11px 14px; font-size: 12px; } }
+/* Tablet e celular: menu recolhido */
+@media (max-width: 1000px) {
+  .menu-botao { display: inline-flex; margin-left: auto; }
+  .cta-topo { display: none; }
+  .cabecalho-in { flex-wrap: wrap; }
+  .menu { display: none; order: 3; flex-basis: 100%; flex-direction: column; align-items: stretch; gap: 2px; padding: 8px 0 4px; border-top: 1px solid #DDE5E2; white-space: normal; font-size: 14px; }
+  .menu.aberto { display: flex; }
+  .menu a { padding: 12px 10px; }
+  .menu .menu-cta-movel { display: block; margin-top: 8px; text-align: center; background: #F27123; color: #1E2B28; font-weight: 800; }
+}
+@media (max-width: 720px) {
+  .so-desktop { display: none !important; }
+  .barra-topo-in { padding: 6px 16px; }
+  .cabecalho-in { padding: 10px 16px; }
+  .cabecalho-logo img { height: 46px; }
+}
+[id] { scroll-margin-top: 96px; }

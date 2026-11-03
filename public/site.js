@@ -1,3 +1,13 @@
+// Menu do celular
+(function () {
+  var b = document.querySelector('.menu-botao'), m = document.getElementById('menu-principal');
+  if (!b || !m) return;
+  b.addEventListener('click', function () {
+    var aberto = m.classList.toggle('aberto');
+    b.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+  });
+  m.addEventListener('click', function (e) { if (e.target.tagName === 'A') { m.classList.remove('aberto'); b.setAttribute('aria-expanded', 'false'); } });
+})();
 // Formulário de avaliação: monta a mensagem e abre a conversa no WhatsApp da DIMA.
 (function () {
   var form = document.getElementById('form-avaliacao');

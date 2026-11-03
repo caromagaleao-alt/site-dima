@@ -36,8 +36,7 @@ const fmtData = (d) => d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'l
 // ---------- Partes comuns ----------
 const linkStyle = 'color: #0B4D3F; text-decoration: none; padding: 12px 0; border-bottom: 3px solid transparent';
 const header = (ativo) => read('src/partials/header.html')
-  .replace('<!--BLOGLINK-->', `<a href="/blog/" style="${linkStyle}">Blog</a>\n`)
-  .replace(new RegExp(`(<a href="${ativo}" style="color: #0B4D3F; text-decoration: none; padding: 12px 0; border-bottom: 3px solid )transparent`), `$1${H.orange}`);
+  .replace(`<a href="${ativo}">`, `<a href="${ativo}" class="ativo" aria-current="page">`);
 const footer = read('src/partials/footer.html')
   .replace('{{ANO}}', String(new Date().getFullYear()))
   .replace('<!--BLOGLINKFOOT-->', '<a href="/blog/">Blog</a>\n');
