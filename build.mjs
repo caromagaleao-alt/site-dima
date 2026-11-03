@@ -2,6 +2,7 @@
 // Uso: npm run build
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { marked } from 'marked';
 import matter from 'gray-matter';
 import { servicos, icones, videos } from './src/servicos.mjs';
@@ -17,6 +18,10 @@ fs.rmSync(DIST, { recursive: true, force: true });
 fs.cpSync(path.join(ROOT, 'public'), DIST, { recursive: true });
 
 const pages = []; // para o sitemap
+// Versão dos arquivos de estilo e script: muda sempre que o conteúdo muda,
+// para o navegador nunca misturar página nova com estilo antigo.
+const ver = (f) => crypto.createHash('md5').update(read('public/' + f)).digest('hex').slice(0, 8);
+const V = { css: ver('site.css'), js: ver('site.js') };
 
 // ---------- Blog: lê os artigos ----------
 const blogDir = path.join(ROOT, 'content/blog');
@@ -81,7 +86,7 @@ function layout({ titulo, descricao, caminho, corpo, ativo = '', schema = [], im
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/site.css?v=${V.css}">
 ${ld}
 </head>
 <body>
@@ -93,7 +98,7 @@ ${corpo}
 </main>
 ${footer}
 </div>
-<script src="/site.js" defer></script>
+<script src="/site.js?v=${V.js}" defer></script>
 </body>
 </html>
 `;

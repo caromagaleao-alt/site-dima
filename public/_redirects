@@ -1,6 +1,36 @@
 # Endereços do site antigo -> páginas novas (redirecionamento 301)
 /servicos/limpeza-de-fachada /servicos/limpeza-de-vidros-e-fachadas/ 301
 /servicos/limpeza-de-fachada/ /servicos/limpeza-de-vidros-e-fachadas/ 301
+# Páginas antigas do site (WordPress) -> equivalentes no site novo
+/servicos /#servicos 301
+/servicos/ /#servicos 301
+/servicos/polimento-pisos /servicos/polimento-de-pisos/ 301
+/servicos/polimento-pisos/ /servicos/polimento-de-pisos/ 301
+/servicos/limpeza-de-telhado /servicos/limpeza-de-telhados-e-calhas/ 301
+/servicos/limpeza-de-telhado/ /servicos/limpeza-de-telhados-e-calhas/ 301
+/servicos/limpeza-de-coifa /servicos/limpeza-de-coifas/ 301
+/servicos/limpeza-de-coifa/ /servicos/limpeza-de-coifas/ 301
+/servicos/limpeza-de-carpete /servicos/tratamento-de-pisos/ 301
+/servicos/limpeza-de-carpete/ /servicos/tratamento-de-pisos/ 301
+/contato /#contato 301
+/contato/ /#contato 301
+/sobre-a-dima /#sobre 301
+/sobre-a-dima/ /#sobre 301
+/sobre /#sobre 301
+/sobre/ /#sobre 301
+/area-de-entrega /#onde-atuamos 301
+/area-de-entrega/ /#onde-atuamos 301
+/dicas-de-limpeza /blog/ 301
+/dicas-de-limpeza/ /blog/ 301
+/feed /blog/ 301
+/feed/ /blog/ 301
+/author/* /blog/ 301
+/produtos/dicas/* /blog/ 301
+/produtos/videos/* /#dicas 301
+/produtos/videos /#dicas 301
+/caract-produtos/* / 301
+/wp-content/* / 301
+
 /produto/* / 301
 /produtos/* / 301
 /cat-produtos/* / 301
