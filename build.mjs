@@ -137,7 +137,7 @@ function blocoCTA(titulo, msg) {
   return `<div style="background: #0B4D3F; color: #FFFFFF; border-radius: 16px; padding: 40px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between">
 <div style="flex: 1 1 420px">
 <h2 style="margin: 0 0 8px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 26px; text-transform: uppercase">${esc(titulo)}</h2>
-<p style="margin: 0; color: #D3E4DD">Fale com nossa equipe e solicite uma avaliação.</p>
+<p style="margin: 0; color: #D3E4DD">Atendemos toda a Grande BH. Fale com nossa equipe e solicite uma avaliação.</p>
 </div>
 ${btnLaranja(wa(msg), 'Falar pelo WhatsApp')}
 </div>`;
@@ -145,8 +145,8 @@ ${btnLaranja(wa(msg), 'Falar pelo WhatsApp')}
 
 // ---------- Home ----------
 write('/', layout({
-  titulo: 'Limpeza profissional pós-obra, industrial e fachadas | DIMA',
-  descricao: 'Desde 2002 em limpeza pós-obra, industrial, vidros e fachadas. Equipe treinada e equipamentos adequados. Solicite uma avaliação.',
+  titulo: 'Limpeza profissional pós-obra, industrial e fachadas na Grande BH | DIMA',
+  descricao: 'Desde 2002 em limpeza pós-obra, industrial, vidros e fachadas em toda a Grande BH. Equipe treinada e equipamentos adequados. Solicite uma avaliação.',
   caminho: '/',
   corpo: read('src/home.html'),
   schema: [{
