@@ -7,7 +7,7 @@ export default {
   // Google Analytics 4 (conta DIMA Limpeza Profissional, fluxo Site DIMA)
   analytics: 'G-4K1E01ENSM',
   redes: [
-    'https://www.instagram.com/dimalimpeza.pro/',
+    'https://www.instagram.com/dima.limpezapro/',
     'https://www.youtube.com/@DicasdaCarol',
   ],
   // Área atendida: vai só para os dados lidos pelo Google (não aparece no texto do site).
