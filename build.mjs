@@ -274,7 +274,7 @@ for (const p of posts) {
 <div style="max-width: 760px; margin: 0 auto; padding: 48px 24px 40px">
 <nav aria-label="Você está em" style="font-size: 14px; color: #3D4C48; margin-bottom: 20px"><a href="/" style="text-decoration: none">Início</a> › <a href="/blog/" style="text-decoration: none">Blog</a></nav>
 <h1 style="margin: 0 0 16px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 38px; line-height: 1.15; color: #0B4D3F">${esc(p.titulo)}</h1>
-<p style="margin: 0; color: #3D4C48; font-size: 14px">${fmtData(p.date)} · ${esc(p.autor || 'Carolina Leão')}</p>
+<p style="margin: 0; color: #3D4C48; font-size: 14px">${fmtData(p.date)}${p.atualizado ? ` · atualizado em ${fmtData(p.atualizado instanceof Date ? p.atualizado : new Date(p.atualizado + 'T12:00:00'))}` : ''} · ${esc(p.autor || 'Carolina Leão')}</p>
 </div>
 </header>
 <div class="artigo" style="max-width: 760px; margin: 0 auto; padding: 40px 24px 24px">
@@ -294,7 +294,8 @@ ${serv ? `<p style="margin: 24px 0 0"><a href="/servicos/${serv.slug}/" style="f
     caminho, corpo, ativo: '/blog/', tipo: 'article', imagem: p.imagem || '/img/og-dima.png',
     schema: [{
       '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.titulo, datePublished: p.date.toISOString().slice(0, 10),
-      author: { '@type': 'Person', name: p.autor || 'Carolina Leão' }, publisher: { '@id': `${config.url}/#empresa` },
+      author: { '@type': 'Person', name: p.autor || 'Carolina Leão' },
+      ...(p.atualizado ? { dateModified: (p.atualizado instanceof Date ? p.atualizado : new Date(p.atualizado + 'T12:00:00')).toISOString().slice(0, 10) } : {}), publisher: { '@id': `${config.url}/#empresa` },
       mainEntityOfPage: config.url + caminho, ...(p.imagem ? { image: config.url + p.imagem } : {}),
     }],
   }));
