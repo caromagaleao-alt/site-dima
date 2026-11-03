@@ -4,6 +4,8 @@ export default {
   telefone: '+55-31-99127-8633',
   whatsapp: 'https://wa.me/5531991278633',
   email: 'comercial@dimadistribuidora.com.br',
+  // Google Analytics 4 (conta DIMA Limpeza Profissional, fluxo Site DIMA)
+  analytics: 'G-4K1E01ENSM',
   redes: [
     'https://www.instagram.com/dimalimpeza.pro/',
     'https://www.youtube.com/@DicasdaCarol',

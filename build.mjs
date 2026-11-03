@@ -87,6 +87,8 @@ function layout({ titulo, descricao, caminho, corpo, ativo = '', schema = [], im
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Open+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/site.css?v=${V.css}">
+<script async src="https://www.googletagmanager.com/gtag/js?id=${config.analytics}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${config.analytics}');</script>
 ${ld}
 </head>
 <body>
