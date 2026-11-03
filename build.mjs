@@ -54,7 +54,7 @@ const schemaEmpresa = {
   foundingDate: '2002',
   slogan: 'Limpeza é o nosso negócio',
   sameAs: config.redes,
-  ...(config.areaAtendida.length ? { areaServed: config.areaAtendida.map((c) => ({ '@type': 'City', name: c })) } : {}),
+  ...(config.areaAtendida.length ? { areaServed: config.areaAtendida.map((c) => (typeof c === 'string' ? { '@type': 'City', name: c } : c)) } : {}),
 };
 
 function layout({ titulo, descricao, caminho, corpo, ativo = '', schema = [], imagem = '/img/og-dima.png', tipo = 'website' }) {

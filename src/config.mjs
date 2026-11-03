@@ -9,7 +9,14 @@ export default {
     'https://www.youtube.com/@DicasdaCarol',
     'https://www.linkedin.com/company/dima-distribuidora-de-materiais-de-limpeza/',
   ],
-  // Cidades atendidas: vão só para os dados lidos pelo Google (não aparecem no texto do site).
-  // Exemplo: ['Belo Horizonte', 'Contagem', 'Nova Lima']
-  areaAtendida: [],
+  // Área atendida: vai só para os dados lidos pelo Google (não aparece no texto do site).
+  // Região metropolitana de BH, num raio de 80 km a partir do centro de Belo Horizonte.
+  areaAtendida: [
+    { '@type': 'AdministrativeArea', name: 'Região Metropolitana de Belo Horizonte' },
+    {
+      '@type': 'GeoCircle',
+      geoMidpoint: { '@type': 'GeoCoordinates', latitude: -19.9191, longitude: -43.9386 },
+      geoRadius: '80000',
+    },
+  ],
 };
