@@ -7,7 +7,6 @@ export default {
   redes: [
     'https://www.instagram.com/dimalimpeza.pro/',
     'https://www.youtube.com/@DicasdaCarol',
-    'https://www.linkedin.com/company/dima-distribuidora-de-materiais-de-limpeza/',
   ],
   // Área atendida: vai só para os dados lidos pelo Google (não aparece no texto do site).
   // Região metropolitana de BH, num raio de 80 km a partir do centro de Belo Horizonte.

@@ -39,7 +39,8 @@ const header = (ativo) => read('src/partials/header.html')
   .replace('<!--BLOGLINK-->', `<a href="/blog/" style="${linkStyle}">Blog</a>\n`)
   .replace(new RegExp(`(<a href="${ativo}" style="color: #0B4D3F; text-decoration: none; padding: 12px 0; border-bottom: 3px solid )transparent`), `$1${H.orange}`);
 const footer = read('src/partials/footer.html')
-  .replace('<!--BLOGLINKFOOT-->', '<a href="/blog/" style="color: #D3E4DD; text-decoration: none">Blog</a>\n');
+  .replace('{{ANO}}', String(new Date().getFullYear()))
+  .replace('<!--BLOGLINKFOOT-->', '<a href="/blog/">Blog</a>\n');
 
 const schemaEmpresa = {
   '@context': 'https://schema.org',
@@ -108,6 +109,8 @@ function write(caminho, html) {
 const h2 = (t, extra = '') => `<h2 style="margin: 0 0 12px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 34px; line-height: 1.15; text-transform: uppercase; color: #0B4D3F${extra}">${t}</h2>`;
 const btnLaranja = (href, t) => `<a href="${href}" style="background: ${H.orange}; color: #0B2A22; text-decoration: none; font-weight: 700; padding: 14px 24px; border-radius: 8px; display: inline-flex; align-items: center; min-height: 48px; box-sizing: border-box">${t}</a>`;
 const play = (w = 72) => `<svg aria-hidden="true" width="${w}" height="${Math.round(w * 0.72)}" viewBox="0 0 64 46"><rect width="64" height="46" rx="12" fill="#CC0000"></rect><path d="M26 14l16 9-16 9z" fill="#FFFFFF"></path></svg>`;
+const unsplash = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&crop=entropy&q=70&auto=format`;
+const fotoUnsplash = (id, w, h, alt, style) => `<img src="${unsplash(id, w, h)}" srcset="${[w / 2, w, w * 1.5].map((x) => `${unsplash(id, Math.round(x), Math.round((x * h) / w))} ${Math.round(x)}w`).join(', ')}" sizes="(max-width: 720px) 100vw, ${w}px" alt="${esc(alt)}" width="${w}" height="${h}" style="${style}">`;
 const wa = (msg) => `${config.whatsapp}?text=${encodeURIComponent(msg)}`;
 
 function blocoVideo(v) {
@@ -178,7 +181,7 @@ ${btnLaranja(wa(msg), 'Solicitar avaliação pelo WhatsApp')}
 <a href="#etapas" style="border: 2px solid #0B4D3F; color: #0B4D3F; text-decoration: none; font-weight: 700; padding: 12px 24px; border-radius: 8px; display: inline-flex; align-items: center; min-height: 48px; box-sizing: border-box">Ver as etapas</a>
 </div>
 </div>
-<div class="painel-heroi" aria-hidden="true" style="flex: 1 1 420px; min-width: 0; height: 420px; border-radius: 16px; background: #0B4D3F; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px"><span style="position: absolute; left: -80px; top: -80px; width: 230px; height: 230px; border-radius: 50%; background: #157E48"></span><span style="position: absolute; right: -120px; bottom: -120px; width: 360px; height: 360px; border-radius: 50%; border: 44px solid ${H.orange}; box-sizing: border-box"></span><span style="position: relative; width: 140px; height: 140px; border-radius: 50%; background: ${H.orange}; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 28px rgba(0,0,0,0.22)"><svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icones[s.icone]}</svg></span><span style="position: relative; color: #FFFFFF; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 0 24px">${esc(s.nome)}</span></div>
+<div class="painel-heroi" style="flex: 1 1 420px; min-width: 0">${fotoUnsplash(s.foto, 640, 420, s.fotoAlt, 'display: block; width: 100%; height: 420px; object-fit: cover; border-radius: 16px; box-shadow: 0 24px 48px -20px rgba(11,77,63,0.45)')}</div>
 </div>
 </div>
 </section>
