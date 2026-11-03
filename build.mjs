@@ -152,7 +152,7 @@ write('/', layout({
   caminho: '/',
   corpo: read('src/home.html'),
   schema: [{
-    '@context': 'https://schema.org', '@type': 'WebSite', name: 'DIMA Limpeza Profissional', url: `${config.url}/`, inLanguage: 'pt-BR',
+    '@context': 'https://schema.org', '@type': 'WebSite', name: 'DIMA Limpeza Profissional', alternateName: ['DIMA', 'DIMA Limpeza'], url: `${config.url}/`, inLanguage: 'pt-BR',
   }],
 }));
 
