@@ -1,0 +1,14 @@
+# Endereços do site antigo -> páginas novas (redirecionamento 301)
+/servicos/limpeza-de-fachada /servicos/limpeza-de-vidros-e-fachadas/ 301
+/servicos/limpeza-de-fachada/ /servicos/limpeza-de-vidros-e-fachadas/ 301
+/produto/* / 301
+/produtos/* / 301
+/cat-produtos/* / 301
+/categoria-produto/* / 301
+/loja / 301
+/loja/* / 301
+/carrinho/* / 301
+/minha-conta/* / 301
+/finalizar-compra/* / 301
+/representadas / 301
+/representadas/* / 301
