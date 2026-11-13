@@ -117,6 +117,30 @@ const btnLaranja = (href, t) => `<a href="${href}" style="background: ${H.orange
 const play = (w = 72) => `<svg aria-hidden="true" width="${w}" height="${Math.round(w * 0.72)}" viewBox="0 0 64 46"><rect width="64" height="46" rx="12" fill="#CC0000"></rect><path d="M26 14l16 9-16 9z" fill="#FFFFFF"></path></svg>`;
 const unsplash = (id, w, h) => `https://images.unsplash.com/photo-${id}?w=${w}&h=${h}&fit=crop&crop=entropy&q=70&auto=format`;
 const fotoUnsplash = (id, w, h, alt, style) => `<img src="${unsplash(id, w, h)}" srcset="${[w / 2, w, w * 1.5].map((x) => `${unsplash(id, Math.round(x), Math.round((x * h) / w))} ${Math.round(x)}w`).join(', ')}" sizes="(max-width: 720px) 100vw, ${w}px" alt="${esc(alt)}" width="${w}" height="${h}" style="${style}">`;
+function blocoProcesso(s) {
+  if (!s.processo) return '';
+  const img = (e) => e.fotoLocal
+    ? `<img src="${e.fotoLocal}" alt="${esc(e.alt)}" width="560" height="420" loading="lazy" style="display: block; width: 100%; height: 320px; object-fit: cover">`
+    : fotoUnsplash(e.foto, 560, 420, e.alt, 'display: block; width: 100%; height: 320px; object-fit: cover').replace('<img ', '<img loading="lazy" ');
+  const tipos = s.tipos ? `<h3 style="margin: 48px 0 16px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; color: #FFFFFF">${esc(s.tiposTitulo)}</h3>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px">${s.tipos.map((t) => `<li style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; padding: 8px 16px; font-weight: 600">${esc(t)}</li>`).join('')}</ul>` : '';
+  return `<section id="etapas" style="background: #0B4D3F; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
+<p style="margin: 0 0 8px; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #F7A266">Como fazemos</p>
+<h2 style="margin: 0 0 12px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 34px; line-height: 1.15; text-transform: uppercase">${esc(s.processoTitulo)}</h2>
+<p style="margin: 0 0 40px; color: #D3E4DD; max-width: 680px">${esc(s.processoIntro)}</p>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px">
+${s.processo.map((e, i) => `<li style="background: #FFFFFF; color: #1E2B28; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column">
+${img(e)}
+<div style="padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 12px">${etapaNum(i + 1)}<h3 style="margin: 0; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; color: #0B4D3F">${esc(e.titulo)}</h3></div>
+<p style="margin: 0; color: #3D4C48">${esc(e.texto)}</p>
+</div></li>`).join('\n')}
+</ol>
+${tipos}
+</div>
+</section>`;
+}
 const wa = (msg) => `${config.whatsapp}?text=${encodeURIComponent(msg)}`;
 
 function blocoVideo(v) {
@@ -148,7 +172,7 @@ ${btnLaranja(wa(msg), 'Falar pelo WhatsApp')}
 // ---------- Home ----------
 write('/', layout({
   titulo: 'Limpeza profissional pós-obra, industrial e fachadas na Grande BH | DIMA',
-  descricao: 'Desde 2002 em limpeza pós-obra, industrial, vidros e fachadas em toda a Grande BH. Equipe treinada e equipamentos adequados. Solicite uma avaliação.',
+  descricao: 'Desde 2002 em limpeza pós-obra, industrial, vidros, fachadas e polimento de pisos em toda a Grande BH. Equipe treinada e equipamentos adequados.',
   caminho: '/',
   corpo: read('src/home.html'),
   schema: [{
@@ -200,14 +224,14 @@ ${s.inclui.map((i) => `<li style="flex: 1 1 340px; display: flex; gap: 12px; ali
 </ul>
 </section>
 
-<section id="etapas" style="background: #0B4D3F; color: #FFFFFF">
+${s.processo ? blocoProcesso(s) : `<section id="etapas" style="background: #0B4D3F; color: #FFFFFF">
 <div style="max-width: 1200px; margin: 0 auto; padding: 88px 24px">
 <h2 style="margin: 0 0 40px; font-family: Montserrat, sans-serif; font-weight: 800; font-size: 34px; line-height: 1.15; text-transform: uppercase">Como a DIMA trabalha</h2>
 <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 24px">
 ${etapas.map(([t, d], i) => `<li style="flex: 1 1 190px; display: flex; flex-direction: column; gap: 10px">${etapaNum(i + 1)}<h3 style="margin: 0; font-size: 18px">${t}</h3><p style="margin: 0; color: #D3E4DD">${esc(d)}</p></li>`).join('\n')}
 </ol>
 </div>
-</section>
+</section>`}
 
 ${blocoVideo(s.video)}
 
